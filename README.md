@@ -1,5 +1,8 @@
 # Balanceo de carga con Nginx
 
+![image](https://github.com/camposchaconjosemaria/Balanceo-de-carga-con-Nginx/assets/114906855/254645c8-1d14-4ae1-9f13-15e06e3a9fc1)
+
+
 ## 1.- Instalación del Servidor Nginx
 
 Primero, deberás instalar Nginx en todos los servidores. Puedes hacerlo con el siguiente comando:
@@ -121,4 +124,8 @@ Si es la primera vez que ejecuta Certbot, se le pedirá que ingrese una direcci�
 Una vez que se haya verificado el certificado, Certbot configurará automáticamente los archivos para que su dominio sea accesible a través de HTTPS.
 
 Recuerde que este proceso puede variar dependiendo de la configuración específica de su servidor y sistema operativo. Asegúrese de seguir las recomendaciones y prácticas de seguridad pertinentes para su entorno.
+
+## 5.- Comprobación
+
+
 
