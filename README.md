@@ -126,6 +126,22 @@ Una vez que se haya verificado el certificado, Certbot configurará automáticam
 Recuerde que este proceso puede variar dependiendo de la configuración específica de su servidor y sistema operativo. Asegúrese de seguir las recomendaciones y prácticas de seguridad pertinentes para su entorno.
 
 ## 5.- Comprobación
+![image](/img/nginx1.png)
+
+![image](/img/nginx2.png)
+
+
+## 6.- Referencias
+
+[Instalación y Configuración de Nginx (Enclave Informático)](https://enclaveinformatico.com/nginx-instalando-y-configurando-un-servidor-web/)
+
+[Instalación y Configuración de Nginx (ServerSpace.io)](https://serverspace.io/es/support/help/installing-and-configuring-nginx/)
+
+[Proteger Nginx con Let's Encrypt (Tutorial de DigitalOcean)](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04-es)
+
+
+
+## 7.- Licencia
 
 
 
