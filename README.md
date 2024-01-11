@@ -20,17 +20,16 @@ A continuación, es necesario ajustar la configuración en ambos servidores de a
 * En el primer servidor de aplicaciones, procede a eliminar el archivo `index.html` predeterminado y crear uno nuevo:
 
 ```bash
-# rm -rf /usr/share/nginx/html/index.html
-# nano /usr/share/nginx/html/index.html
+# rm /var/www/html/index*
+# nano /var/www/html/index.html
 ```
 Dentro del editor, agrega las siguientes líneas:
 
 ```bash
-html
-<html>
-<title>Servidor de Aplicación Primario</title>
+html>
+<title>nginx</title>
 <body>
-Esta es mi primera aplicación en el servidor
+Soy el servidor nginx1 de jose
 </body>
 </html>
 ```
@@ -38,17 +37,16 @@ Guarda los cambios y cierra el archivo.
 * Ahora, en el segundo servidor de aplicaciones, realiza el mismo proceso:
 
 ```bash
-# rm -rf /usr/share/nginx/html/index.html
-# nano /usr/share/nginx/html/index.html
+# rm /var/www/html/index*
+# nano /var/www/html/index.html
 ```
 Dentro del editor, agrega las siguientes líneas:
 
 ```bash
-html
-<html>
-<title>Servidor de Aplicación Primario</title>
+html>
+<title>nginx</title>
 <body>
-Esta es mi primera aplicación en el servidor
+Soy el servidor nginx2 de jose
 </body>
 </html>
 ```
@@ -62,20 +60,20 @@ Primero, elimina el archivo de configuración predeterminado de Nginx y crea un 
 
 ```bash
 # rm -rf /etc/nginx/sites-enabled/default 
-# nano /etc/nginx/conf.d/load-balancing.conf
+# nano /etc/nginx/conf.d/balancing.conf
 ```
 
 Añade las siguientes líneas:
 
 ```bash
 upstream backend {
-    server1 52.91.164.125;
-    server2 44.204.91.16;
+    server1 52.91.164.125; # Ip del servidor primario desplegado en AWS
+    server2 44.204.91.16;  # Ip del servidor secundario desplegado en AWS
 }
 
 server {
     listen      80;
-    server_name jcachaco.ddns.net;
+    server_name jcachaco.ddns.net; # Dominio registrado con la IP del servidor de balanceo de carga
 
     location / {
         proxy_redirect      off;
@@ -86,10 +84,9 @@ server {
     }
 }
 ```
-El nombre de dominio lo registre en NOIP-domain para la prueba
 
 ## Protección de Nginx con Let´s Encrypt
-## Paso 1: Instalar Certbot
+### Paso 1: Instalar Certbot
 
 El primer paso para utilizar Let’s Encrypt y obtener un certificado SSL es instalar el software Certbot en tu servidor.
 
@@ -98,5 +95,30 @@ Instala Certbot y su complemento de Nginx utilizando el siguiente comando:
 ```bash
 sudo apt install certbot python3-certbot-nginx
 ```
+### Paso 2: Habilitar HTTPS a través del firewall
 
+Verifique el estado actual del firewall:
+
+```bash
+sudo ufw status
+```
+Permita el tráfico HTTPS, active el perfil de Nginx Full y elimine el permiso redundante del perfil HTTP de Nginx:
+
+```bash
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+```
+### Paso 3: Obtener un certificado SSL
+
+Ejecute Certbot con el complemento --nginx y especifique los nombres de dominio para los cuales desea que el certificado sea válido
+
+```bash
+sudo certbot --nginx -d jcachaco.ddns.net
+```
+
+Si es la primera vez que ejecuta Certbot, se le pedirá que ingrese una dirección de correo electrónico y acepte las condiciones de servicio. Posteriormente, Certbot se comunicará con el servidor de Let’s Encrypt y realizará una verificación para confirmar que usted controla el dominio solicitado.
+
+Una vez que se haya verificado el certificado, Certbot configurará automáticamente los archivos para que su dominio sea accesible a través de HTTPS.
+
+Recuerde que este proceso puede variar dependiendo de la configuración específica de su servidor y sistema operativo. Asegúrese de seguir las recomendaciones y prácticas de seguridad pertinentes para su entorno.
 
