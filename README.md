@@ -143,5 +143,8 @@ Recuerde que este proceso puede variar dependiendo de la configuración específ
 
 ## 7.- Licencia
 
+<p align="center">
+  <img src="/img/licencia.png" alt="licencia">
+</p>
 
 
