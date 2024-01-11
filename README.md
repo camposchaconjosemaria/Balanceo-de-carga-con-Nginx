@@ -1,6 +1,6 @@
 # Balanceo de carga con Nginx
 
-## Instalación del Servidor Nginx
+## 1.- Instalación del Servidor Nginx
 
 Primero, deberás instalar Nginx en todos los servidores. Puedes hacerlo con el siguiente comando:
 
@@ -13,7 +13,7 @@ Una vez instalado, inicia el servicio Nginx y habilítalo para que se inicie al 
 # systemctl start nginx
 # systemctl enable nginx
 ```
-## Configuración de los Servidores de Aplicaciones
+## 2.- Configuración de los Servidores de Aplicaciones
 
 A continuación, es necesario ajustar la configuración en ambos servidores de aplicaciones.
 
@@ -52,7 +52,7 @@ Soy el servidor nginx2 de jose
 ```
 Guarda los cambios y cierra el archivo.
 
-## Configuración del Servidor de Balanceo de Carga
+## 3.- Configuración del Servidor de Balanceo de Carga
 
 Para continuar, deberás configurar un servidor balanceador de carga que distribuya la carga entre ambos servidores de aplicaciones. 
 
@@ -85,7 +85,7 @@ server {
 }
 ```
 
-## Protección de Nginx con Let´s Encrypt
+## 4.- Protección de Nginx con Let´s Encrypt
 ### Paso 1: Instalar Certbot
 
 El primer paso para utilizar Let’s Encrypt y obtener un certificado SSL es instalar el software Certbot en tu servidor.
