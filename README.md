@@ -70,8 +70,8 @@ Añade las siguientes líneas:
 
 ```bash
 upstream backend {
-    server1 52.91.164.125; # Ip del servidor primario desplegado en AWS
-    server2 44.204.91.16;  # Ip del servidor secundario desplegado en AWS
+    server 52.91.164.125; # Ip del servidor primario desplegado en AWS
+    server 44.204.91.16;  # Ip del servidor secundario desplegado en AWS
 }
 
 server {
